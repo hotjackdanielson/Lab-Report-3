@@ -8,7 +8,7 @@
 // Pin 15 can work but DHT must be disconnected during program upload.
 // Uncomment the type of sensor in use:
 //#define DHTTYPE    DHT11     // DHT 11
-#define DHTTYPE    DHT11     // DHT 21 (AM2302)
+#define DHTTYPE    DHT11     // DHT 11 (AM2302)
 //#define DHTTYPE    DHT21     // DHT 21 (AM2301)
 #include <LiquidCrystal.h>
 // initialize the LCD library with the numbers of the interface pins
@@ -99,4 +99,5 @@ void loop() {
   lcd.print("%");   // Print the humidity unit
   }
 }
+
 
