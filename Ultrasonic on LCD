@@ -1,0 +1,47 @@
+#include <LiquidCrystal.h>
+#define trigPin 13
+#define echoPin 8
+float duration, distance;
+LiquidCrystal lcd(12, 11, 6, 5, 4, 3);
+void setup() {
+  // put your setup code here, to run once:
+   lcd.begin(16, 2);
+    // initialize serial communication:
+Serial.begin (9600);
+pinMode (trigPin, OUTPUT);
+pinMode (echoPin, INPUT);
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+// Write a pulse to the HC-SR04 trigger pin//
+digitalWrite(trigPin, LOW);
+delayMicroseconds(2);
+digitalWrite(trigPin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigPin, LOW);
+// Measure the response from the HC_SR04 Echo Pin//
+duration = pulseIn(echoPin, HIGH);
+//Determine distance from duration
+// Use 343 metres per second as speed of sound
+distance = (duration / 2) * 0.0343;
+lcd.clear();
+// Send results to Serial Monitor
+Serial.print("Distance =");
+if (distance >= 400 || distance <= 2 ){
+  lcd.clear();
+  lcd.setCursor(0, 0);// Set the cursor to the first column of the second row
+  Serial.println("out of range");
+  lcd.print("out of range");
+}
+else {
+  lcd.clear();
+  lcd.setCursor(0, 0);// Set the cursor to the first column of the second row
+  Serial.print(distance);
+Serial.println("cm"); 
+  lcd.print("Distance:");
+  lcd.print(distance);
+  lcd.print("cm");
+delay(500);
+}
+delay(500);
+}
