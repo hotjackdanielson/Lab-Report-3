@@ -1,13 +1,26 @@
+/*
+  Ultrasonic Sensor with LCD Display
+  This program reads the distance measured by an Ultrasonic sensor and
+  displays the data on a 16x2 LCD. The program uses digital output to
+  control the Ultrasonic sensor and digital input to read its readings,
+  and digital output to control the LCD display.
+  Author: Daniel Bohbot
+  Date: May 6, 2023
+*/
 #include <LiquidCrystal.h>
+// define the pins for the Ultrasonic sensor
 #define trigPin 13
 #define echoPin 8
 float duration, distance;
+// initialize the LCD library with the numbers of the interface pins
 LiquidCrystal lcd(12, 11, 6, 5, 4, 3);
 void setup() {
   // put your setup code here, to run once:
+  // set up the LCD's number of columns and rows
    lcd.begin(16, 2);
     // initialize serial communication:
 Serial.begin (9600);
+// set up the Ultrasonic sensor pins
 pinMode (trigPin, OUTPUT);
 pinMode (echoPin, INPUT);
 }
@@ -27,10 +40,12 @@ distance = (duration / 2) * 0.0343;
 lcd.clear();
 // Send results to Serial Monitor
 Serial.print("Distance =");
-if (distance >= 400 || distance <= 2 ){
+ // Distances that cannot be read will be marked as "out of range" on lcd 
+if (distance >= 400 || distance <= 2 ){ // Setting distance that is out of range
   lcd.clear();
   lcd.setCursor(0, 0);// Set the cursor to the first column of the second row
   Serial.println("out of range");
+   // display the distance on the LCD
   lcd.print("out of range");
 }
 else {
@@ -38,9 +53,11 @@ else {
   lcd.setCursor(0, 0);// Set the cursor to the first column of the second row
   Serial.print(distance);
 Serial.println("cm"); 
+ // display the distance on the LCD
   lcd.print("Distance:");
   lcd.print(distance);
   lcd.print("cm");
+  // wait a short time before reading the sensor again
 delay(500);
 }
 delay(500);
