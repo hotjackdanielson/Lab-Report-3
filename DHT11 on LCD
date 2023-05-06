@@ -1,3 +1,13 @@
+/*
+  DHT11 Sensor with LCD Display
+  This program reads temperature and humidity data from a DHT11 sensor
+  and displays the data on a 16x2 LCD. The program also includes a
+  multi-line comment at the top to describe the goal of the program and
+  its main theme, which is working with digital input (the DHT11 sensor)
+  and output (the LCD display).
+  Author: Daniel Bohbot
+  Date: May 6, 2023
+*/
 // DHT Temperature & Humidity Sensor
 // Unified Sensor Library Example
 #include <Adafruit_Sensor.h>
