@@ -1,3 +1,13 @@
+/*
+  DHT11 Sensor with LCD Display and Push Button
+  This program reads temperature and humidity data from a DHT11 sensor
+  and displays the data on a 16x2 LCD. The program also includes a push button
+  to switch between displaying temperature and humidity. The program uses digital
+  input to read the state of the push button and digital output to control the
+  LCD display.
+  Author: Daniel Bohbot
+  Date: May 6, 2023
+*/
 // DHT Temperature & Humidity Sensor
 // Unified Sensor Library Example
 #include <Adafruit_Sensor.h>
