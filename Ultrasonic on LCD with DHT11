@@ -1,3 +1,14 @@
+/*
+  Ultrasonic Sensor and DHT11 Sensor with LCD Display
+  This program reads the distance measured by an Ultrasonic sensor and
+  the temperature and humidity measured by a DHT11 sensor, and displays
+  the data on a 16x2 LCD. The program uses digital output to control the
+  Ultrasonic sensor and digital input to read its readings, and digital
+  input to read the button state, and digital output to control the LCD
+  display.
+  Author: Daniel Bohbot
+  Date: May 6, 2023
+*/
 // DHT Temperature & Humidity Sensor
 // Unified Sensor Library Example
 #include <Adafruit_Sensor.h>
@@ -20,6 +31,7 @@ const int echoPin = 8;
 // create a DHT object
 DHT_Unified dht(DHTPIN, DHTTYPE);
 uint32_t delayMS;
+// Creating custome character for temperature display with degrees
 byte customChar [] = {
   B01110,
   B01010,
